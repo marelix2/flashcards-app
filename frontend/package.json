@@ -6,6 +6,7 @@
     "enzyme": "^3.10.0",
     "grommet": "^2.7.6",
     "grommet-icons": "^4.3.0",
+    "mespeak": "^2.0.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1",
