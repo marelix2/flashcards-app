@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "enzyme": "^3.10.0",
     "grommet": "^2.7.6",
     "grommet-icons": "^4.3.0",
     "react": "^16.9.0",
@@ -30,5 +31,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "enzyme-adapter-react-16": "^1.14.0",
+    "jest-environment-enzyme": "^7.1.0",
+    "jest-enzyme": "^7.1.0"
   }
 }
