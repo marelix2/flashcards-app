@@ -1,4 +1,4 @@
-Complex flashcard app
+Complex flashcard app wth IPA support (ivona)
 
 front: 
 
