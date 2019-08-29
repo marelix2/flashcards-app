@@ -29,7 +29,7 @@ describe('Routes', () => {
       router = wrapper.find('BrowserRouter')
     })
 
-    describe('contains default route', () => {
+    describe.skip('contains default route', () => {
       const defaultPath = '/'
       let defaultRoute
 
