@@ -1,7 +1,7 @@
 import React from 'react'
 import meSpeak from 'mespeak'
 import murican from 'mespeak/voices/en/en-us.json'
-import {Config} from './../config/maSpeakConfig'
+import {Config} from '../config/maSpeakConfig'
 
 const TestComponent = () => {
     meSpeak.loadConfig(Config)

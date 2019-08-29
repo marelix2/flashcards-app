@@ -2,10 +2,8 @@
 
 import React from 'react'
 import TestComponent from '../TestComponent';
-import {shallow, configure} from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16';
+import {shallow} from 'enzyme'
 
-configure({ adapter: new Adapter() });
 describe( "Test Component", () => {
   let wrapper 
   
