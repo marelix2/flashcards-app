@@ -9,9 +9,9 @@ provider:
   stage: dev
   region: eu-central-1
   stackName: ipa-flashcards-app-stack-${self:provider.stage}
-  apiName: Todo-bartosz-golebiowski-api-${self:provider.stage}
+  apiName: ipa-flashcards-app-${self:provider.stage}
   deploymentBucket:
-    name: Todo-bartosz-golebiowski-bucket-${self:provider.stage}
+    name: ipa-flashcards-app-${self:provider.stage}
 
 functions:
   hello:
