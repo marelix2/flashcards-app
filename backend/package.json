@@ -1,0 +1,17 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Complex flashcard app wth IPA support (ivona)",
+  "main": "src/status/handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "serverless-deployment-bucket": "^1.1.0",
+    "serverless-iam-roles-per-function": "^2.0.1",
+    "serverless-offline": "^5.10.1"
+  }
+}

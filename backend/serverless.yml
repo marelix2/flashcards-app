@@ -1,0 +1,23 @@
+service: ipa-flashcards-app
+plugins:
+  - serverless-deployment-bucket
+  - serverless-iam-roles-per-function
+  - serverless-offline
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stage: dev
+  region: eu-central-1
+  stackName: ipa-flashcards-app-stack-${self:provider.stage}
+  apiName: Todo-bartosz-golebiowski-api-${self:provider.stage}
+  deploymentBucket:
+    name: Todo-bartosz-golebiowski-bucket-${self:provider.stage}
+
+functions:
+  hello:
+    handler: src/status/handler.status
+    name: ipa-flashcards-app-status
+    events:
+      - http:
+          mehtod: get
+
