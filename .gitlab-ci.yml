@@ -5,18 +5,29 @@ variables:
 
 stages:
   - build
+  - test
   - deploy
 
 build:
   stage: build
   script:
     - cd frontend
+    - pwd
     - yarn install
     - yarn build
+
+test:
+  stage: test
+  script:
+    - yarn test
+    - pwd
+    - cd echo
 
 deploy:
   stage: deploy
   image: python:latest
   script:
+    - pwd
     - pip install awscli
     - aws s3 cp --recursive /build s3://ipa-flashcards-app-frontend
+
