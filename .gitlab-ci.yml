@@ -11,6 +11,7 @@ deploy:
   script:
     - cd frontend
     - yarn install
+    - pip3 install awscli
     - yarn build
     - yarn test
     - yarn deploy
