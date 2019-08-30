@@ -4,14 +4,18 @@ variables:
   AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
 
 stages:
+  - build
   - deploy
 
-deploy:
-  stage: deploy
+build:
+  stage: build
   script:
     - cd frontend
     - yarn install
-    - pip3 install awscli
-    - yarn build
-    - yarn test
+
+deploy:
+  stage: deploy
+  image: python:latest
+  script:
+    - pip install awscli
     - yarn deploy
