@@ -21,8 +21,10 @@ build:
 test:
   stage: test
   script:
+    - cd frontend
     - yarn test
 deploy:
   stage: deploy
   script:
+    - cd frontend
     - yarn deploy
