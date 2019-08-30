@@ -8,6 +8,9 @@ stages:
   - build
   - test
   - deploy
+cache:
+  paths:
+    - node_modules
 
 build:
   stage: build
