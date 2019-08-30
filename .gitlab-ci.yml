@@ -15,16 +15,22 @@ cache:
 build:
   stage: build
   script:
-    - pwd
+    - ls
     - cd frontend
+    - ls
     - yarn install
     - yarn build
+    - ls
+  artifacts:
+    paths:
+      - frontend/build
 
 test:
   stage: test
   script:
-    - pwd
+    - ls
     - cd frontend
+    - ls
     - yarn test
 
 deploy:
@@ -34,6 +40,8 @@ deploy:
     - pwd
     - pip install awscli
     - cd frontend
+    - ls
     - cd build
+    - ls
     - aws s3 cp --recursive /build s3://ipa-flashcards-app-frontend
 
