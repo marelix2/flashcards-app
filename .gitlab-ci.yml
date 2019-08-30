@@ -43,5 +43,5 @@ deploy:
     - ls
     - cd build
     - ls
-    - aws s3 cp --recursive /build s3://ipa-flashcards-app-frontend
+    - aws s3 cp --recursive s3://ipa-flashcards-app-frontend
 
