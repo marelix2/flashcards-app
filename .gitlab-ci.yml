@@ -11,17 +11,17 @@ stages:
 build:
   stage: build
   script:
-    - cd frontend
     - pwd
+    - cd frontend
     - yarn install
     - yarn build
 
 test:
   stage: test
   script:
-    - yarn test
     - pwd
-    - cd echo
+    - cd frontend
+    - yarn test
 
 deploy:
   stage: deploy
@@ -29,5 +29,7 @@ deploy:
   script:
     - pwd
     - pip install awscli
+    - cd frontend
+    - cd build
     - aws s3 cp --recursive /build s3://ipa-flashcards-app-frontend
 
