@@ -19,4 +19,4 @@ deploy:
   image: python:latest
   script:
     - pip install awscli
-    - aws s3 cp --recursive ./build s3://ipa-flashcards-app-frontend
+    - aws s3 cp --recursive /build s3://ipa-flashcards-app-frontend
