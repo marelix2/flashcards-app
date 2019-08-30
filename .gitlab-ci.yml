@@ -8,6 +8,10 @@ stages:
   - test
   - deploy
 
+cache:
+  paths:
+    - frontend/node_modules/
+
 build:
   stage: build
   script:
