@@ -23,11 +23,13 @@ installFrontend:
     - ls
     - cd frontend
     - yarn install
+    - cd ..
 
 testFrontend:
   stage: testFrontend
   script:
     - ls
+    - cd frontend
     - yarn test
     - cd ..
 
@@ -37,11 +39,13 @@ installBackend:
     - ls
     - cd backend
     - npm install
+    - cd ..
 
 testBackend:
   stage: testBackend
   script:
     - ls
+    - cd backend
     - npm test
     - cd ..
 
@@ -51,6 +55,7 @@ buildFrontend:
     - ls
     - cd frontend
     - yarn build
+    - cd ..
   only:
     - merge_requests
   artifacts:
@@ -65,6 +70,7 @@ deployFrontend:
     - merge_requests
   script:
     - ls
+    - cd backend
     - pip install awscli
     - aws s3 cp --recursive ./build s3://ipa-flashcards-app-frontend
     - cd ..
