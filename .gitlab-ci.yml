@@ -14,34 +14,30 @@ cache:
 
 build:
   stage: build
+  only:
+    - merge_requests
   script:
-    - ls
     - cd frontend
-    - ls
     - yarn install
     - yarn build
-    - ls
   artifacts:
     paths:
       - frontend/build
+    expire_in: 1 hour
 
 test:
   stage: test
   script:
-    - ls
     - cd frontend
-    - ls
     - yarn test
 
 deploy:
   stage: deploy
   image: python:latest
+  only:
+    - merge_requests
   script:
-    - pwd
     - pip install awscli
     - cd frontend
-    - ls
-    - cd build
-    - ls
-    - aws s3 cp --recursive s3://ipa-flashcards-app-frontend
+    - aws s3 cp --recursive ./build s3://ipa-flashcards-app-frontend
 
