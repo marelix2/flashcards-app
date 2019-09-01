@@ -41,7 +41,6 @@ installBackend:
     - ls
     - cd backend
     - npm install
-    - cd ..
 
 testBackend:
   stage: testBackend
