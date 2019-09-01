@@ -23,8 +23,8 @@ cache:
     - frontend/node_modules/
     - backend/node_modules/
 
-installFrontenddMergeRequest:
-  stage: installFrontenddMergeRequest
+installFrontendMergeRequest:
+  stage: installFrontendMergeRequest
   only:
     - merge_requests
   script:
@@ -43,8 +43,8 @@ testFrontendMergeRequest:
     - yarn test
     - cd ..
 
-installBackenddMergeRequest:
-  stage: installBackenddMergeRequest
+installBackendMergeRequest:
+  stage: installBackendMergeRequest
   only:
     - merge_requests
   script:
