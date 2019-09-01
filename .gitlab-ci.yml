@@ -17,14 +17,14 @@ cache:
     - frontend/node_modules/
     - backend/node_modules/
 
-installFront:
-  stage: installFront
+installFrontend:
+  stage: installFrontend
   script:
     - cd frontend
     - yarn install
 
-testFront:
-  stage: testFront
+testFrontend:
+  stage: testFrontend
   script:
     - yarn test
     - cd ..
