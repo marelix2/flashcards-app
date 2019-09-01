@@ -8,6 +8,16 @@ stages:
   - testFrontend
   - installBackend
   - testBackend
+
+  - installFrontendMergeRequest
+  - testBackendMergeRequest
+  - installBackendMergeRequest
+  - testFrontendMergeRequest
+
+  - finalInstallFrontend
+  - finalTestFrontend
+  - finalInstallBackend
+  - finalTtestBackend
   - buildFrontend
   - deployFrontend
   - deployBackend
@@ -16,6 +26,7 @@ cache:
   paths:
     - frontend/node_modules/
     - backend/node_modules/
+
 
 installFrontend:
   stage: installFrontend
@@ -49,6 +60,91 @@ testBackend:
     - npm test
     - cd ..
 
+
+installFrontendMergeRequest:
+  stage: installFrontendMergeRequest
+  only:
+    - merge_requests
+  script:
+    - ls
+    - cd frontend
+    - yarn install
+    - cd ..
+
+testFrontendMergeRequest:
+  stage: testFrontendMergeRequest
+  only:
+    - merge_requests
+  script:
+    - ls
+    - cd frontend
+    - yarn test
+    - cd ..
+
+installBackendMergeRequest:
+  stage: installBackendMergeRequest
+  only:
+    - merge_requests
+  script:
+    - ls
+    - cd backend
+    - npm install
+    - cd ..
+
+testBackendMergeRequest:
+  stage: testBackendMergeRequest
+  only:
+    - merge_requests
+  script:
+    - ls
+    - cd backend
+    - npm test
+    - cd ..
+
+
+finalInstallFrontend:
+  stage: finalInstallFrontend
+  only:
+    refs:
+      - master
+  script:
+    - ls
+    - cd frontend
+    - yarn install
+    - cd ..
+
+finalTestFrontend:
+  stage: finalTestFrontend
+  only:
+    refs:
+      - master
+  script:
+    - ls
+    - cd frontend
+    - yarn test
+    - cd ..
+
+finalInstallBackend:
+  stage: finalInstallBackend
+  only:
+    refs:
+      - master
+  script:
+    - ls
+    - cd backend
+    - npm install
+    - cd ..
+
+finalTtestBackend:
+  stage: finalTtestBackend
+  only:
+    refs:
+      - master
+  script:
+    - ls
+    - cd backend
+    - npm test
+    - cd ..
 
 buildFrontend:
   stage: buildFrontend
@@ -88,3 +184,4 @@ deployBackend:
     - cd backend
     - npm install -g serverless
     - serverless deploy
+    - cd ..
