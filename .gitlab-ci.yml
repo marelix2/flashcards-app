@@ -8,6 +8,8 @@ stages:
   - testFrontend
   - installBackend
   - testBackend
+  - testBackendMergeRequest
+  - testFrontendMergeRequest
   - buildFrontend
   - deployFrontend
   - deployBackend
@@ -45,10 +47,29 @@ testBackend:
   stage: testBackend
   script:
     - ls
+    - cd ..
+    - cd backend
+    - npm test
+
+testBackendMergeRequest:
+  stage: testBackendMergeRequest
+  only:
+    - merge_requests
+  script:
+    - ls
     - cd backend
     - npm test
     - cd ..
 
+testFrontendMergeRequest:
+  stage: testFrontendMergeRequest
+  only:
+    - merge_requests
+  script:
+    - ls
+    - cd frontend
+    - yarn test
+    - cd ..
 
 buildFrontend:
   stage: buildFrontend
