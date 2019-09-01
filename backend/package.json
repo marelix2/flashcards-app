@@ -2,16 +2,20 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "Complex flashcard app wth IPA support (ivona)",
-  "main": "src/status/handler.js",
+  "main": "src/status/statusController.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "sls invoke test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^6.2.0",
+    "serverless": "^1.51.0",
     "serverless-deployment-bucket": "^1.1.0",
-    "serverless-iam-roles-per-function": "^2.0.1",
+    "serverless-iam-roles-per-function": "^2.0.2",
+    "serverless-mocha-plugin": "^1.11.0",
     "serverless-offline": "^5.10.1"
   }
 }
