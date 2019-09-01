@@ -57,7 +57,8 @@ buildFrontend:
     - yarn build
     - cd ..
   only:
-    - merge_requests
+    refs:
+      - master
   artifacts:
     paths:
       - frontend/build
@@ -67,10 +68,11 @@ deployFrontend:
   stage: deployFrontend
   image: python:latest
   only:
-    - merge_requests
+    refs:
+      - master
   script:
     - ls
-    - cd backend
+    - cd frontend
     - pip install awscli
     - aws s3 cp --recursive ./build s3://ipa-flashcards-app-frontend
     - cd ..
@@ -78,8 +80,10 @@ deployFrontend:
 deployBackend:
   stage: deployBackend
   only:
-    - merge_requests
+    refs:
+      - master
   script:
     - ls
     - cd backend
+    - npm install -g serverless
     - serverless deploy
