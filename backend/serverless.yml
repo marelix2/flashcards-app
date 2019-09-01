@@ -2,6 +2,7 @@ service: ipa-flashcards-app
 plugins:
   - serverless-deployment-bucket
   - serverless-iam-roles-per-function
+  - serverless-mocha-plugin
   - serverless-offline
 provider:
   name: aws
@@ -14,10 +15,14 @@ provider:
     name: ipa-flashcards-app-${self:provider.stage}
 
 functions:
-  hello:
-    handler: src/status/handler.status
-    name: ipa-flashcards-app-status
+  status:
+    handler: src/status/index.handler
     events:
       - http:
-          mehtod: get
+          path: /status
+          method: get
+          cors: true
+
+
+
 

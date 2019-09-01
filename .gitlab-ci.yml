@@ -4,40 +4,69 @@ variables:
   AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
 
 stages:
-  - build
-  - test
-  - deploy
+  - installFrontend
+  - testFrontend
+  - installBackend
+  - testBackend
+  - buildFrontend
+  - deployFrontend
+  - deployBackend
 
 cache:
   paths:
     - frontend/node_modules/
+    - backend/node_modules/
 
-build:
-  stage: build
-  only:
-    - merge_requests
+installFront:
+  stage: installFront
   script:
     - cd frontend
     - yarn install
+
+testFront:
+  stage: testFront
+  script:
+    - yarn test
+    - cd ..
+
+installBackend:
+  stage: installBackend
+  script:
+    - cd backend
+    - npm install
+
+testBackend:
+  stage: testBackend
+  script:
+    - npm test
+    - cd ..
+
+buildFrontend:
+  stage: buildFrontend
+  script:
+    - cd frontend
     - yarn build
+  only:
+    - merge_requests
   artifacts:
     paths:
       - frontend/build
     expire_in: 1 hour
 
-test:
-  stage: test
-  script:
-    - cd frontend
-    - yarn test
-
-deploy:
-  stage: deploy
+deployFrontend:
+  stage: deployFrontend
   image: python:latest
   only:
     - merge_requests
   script:
     - pip install awscli
-    - cd frontend
     - aws s3 cp --recursive ./build s3://ipa-flashcards-app-frontend
+    - cd ..
 
+deployBackend:
+  stage: deployBackend
+  only:
+    - merge_requests
+  script:
+    - cd backend
+    - serverless deploy
