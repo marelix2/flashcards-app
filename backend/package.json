@@ -12,6 +12,7 @@
   "dependencies": {},
   "devDependencies": {
     "mocha": "^6.2.0",
+    "serverless": "^1.51.0",
     "serverless-deployment-bucket": "^1.1.0",
     "serverless-iam-roles-per-function": "^2.0.2",
     "serverless-mocha-plugin": "^1.11.0",
