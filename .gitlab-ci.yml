@@ -49,6 +49,7 @@ testBackend:
     - npm test
     - cd ..
 
+
 buildFrontend:
   stage: buildFrontend
   script:
