@@ -57,7 +57,8 @@ buildFrontend:
     - yarn build
     - cd ..
   only:
-    - merge_requests
+    refs:
+      - master
   artifacts:
     paths:
       - frontend/build
@@ -67,7 +68,8 @@ deployFrontend:
   stage: deployFrontend
   image: python:latest
   only:
-    - merge_requests
+    refs:
+      - master
   script:
     - ls
     - cd frontend
@@ -78,7 +80,8 @@ deployFrontend:
 deployBackend:
   stage: deployBackend
   only:
-    - merge_requests
+    refs:
+      - master
   script:
     - ls
     - cd backend
