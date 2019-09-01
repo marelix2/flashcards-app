@@ -70,7 +70,7 @@ deployFrontend:
     - merge_requests
   script:
     - ls
-    - cd backend
+    - cd frontend
     - pip install awscli
     - aws s3 cp --recursive ./build s3://ipa-flashcards-app-frontend
     - cd ..
@@ -82,4 +82,5 @@ deployBackend:
   script:
     - ls
     - cd backend
+    - npm install -g serverless
     - serverless deploy
