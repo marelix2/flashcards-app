@@ -20,30 +20,35 @@ cache:
 installFrontend:
   stage: installFrontend
   script:
+    - ls
     - cd frontend
     - yarn install
 
 testFrontend:
   stage: testFrontend
   script:
+    - ls
     - yarn test
     - cd ..
 
 installBackend:
   stage: installBackend
   script:
+    - ls
     - cd backend
     - npm install
 
 testBackend:
   stage: testBackend
   script:
+    - ls
     - npm test
     - cd ..
 
 buildFrontend:
   stage: buildFrontend
   script:
+    - ls
     - cd frontend
     - yarn build
   only:
@@ -59,6 +64,7 @@ deployFrontend:
   only:
     - merge_requests
   script:
+    - ls
     - pip install awscli
     - aws s3 cp --recursive ./build s3://ipa-flashcards-app-frontend
     - cd ..
@@ -68,5 +74,6 @@ deployBackend:
   only:
     - merge_requests
   script:
+    - ls
     - cd backend
     - serverless deploy
