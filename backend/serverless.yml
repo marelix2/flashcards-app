@@ -1,18 +1,29 @@
 service: ipa-flashcards-app
 plugins:
   - serverless-deployment-bucket
+  - serverless-secrets-plugin
   - serverless-iam-roles-per-function
   - serverless-mocha-plugin
   - serverless-offline
+
+
 provider:
   name: aws
   runtime: nodejs10.x
-  stage: dev
+  stage: test
   region: eu-central-1
-  stackName: ipa-flashcards-app-stack-${self:provider.stage}
-  apiName: ipa-flashcards-app-${self:provider.stage}
+  stackName: ipa-flashcards-app-stack
+  apiName: ipa-flashcards-app-api
   deploymentBucket:
-    name: ipa-flashcards-app-${self:provider.stage}
+    name: ipa-flashcards-app-bucket
+  environment:
+    DB_NAME: ${self:custom.secrets.DB_NAME}
+    DB_USER: ${self:custom.secrets.DB_USER}
+    DB_PASSWORD: ${self:custom.secrets.DB_PASSWORD}
+
+custom:
+  secrets: ${file(secrets.${opt:stage, self:provider.stage}.yml)}
+
 
 functions:
   status:
@@ -23,6 +34,13 @@ functions:
           method: get
           cors: true
 
+  saveFlashcard:
+    handler: src/controller/flashcard.save
+    events:
+      - http:
+          path: /flashcard
+          method: post
+          cors: true
 
 
 

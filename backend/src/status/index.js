@@ -8,7 +8,6 @@ module.exports.handler = (event, context, callback) => {
       input: event,
     }),
   };
-
   callback(null, response);
 
   // Use this code if you don't use the http event with the LAMBDA-PROXY integration

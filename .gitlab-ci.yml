@@ -14,10 +14,6 @@ stages:
   - installBackendMergeRequest
   - testFrontendMergeRequest
 
-  - finalInstallFrontend
-  - finalTestFrontend
-  - finalInstallBackend
-  - finalTtestBackend
   - buildFrontend
   - deployFrontend
   - deployBackend
@@ -57,6 +53,8 @@ testBackend:
   script:
     - ls
     - cd backend
+    - npm install -g serverless
+    - serverless decrypt --stage test --password '$SECRET_PASSWORD'
     - npm test
     - cd ..
 
@@ -102,50 +100,6 @@ testBackendMergeRequest:
     - cd ..
 
 
-finalInstallFrontend:
-  stage: finalInstallFrontend
-  only:
-    refs:
-      - master
-  script:
-    - ls
-    - cd frontend
-    - yarn install
-    - cd ..
-
-finalTestFrontend:
-  stage: finalTestFrontend
-  only:
-    refs:
-      - master
-  script:
-    - ls
-    - cd frontend
-    - yarn test
-    - cd ..
-
-finalInstallBackend:
-  stage: finalInstallBackend
-  only:
-    refs:
-      - master
-  script:
-    - ls
-    - cd backend
-    - npm install
-    - cd ..
-
-finalTtestBackend:
-  stage: finalTtestBackend
-  only:
-    refs:
-      - master
-  script:
-    - ls
-    - cd backend
-    - npm test
-    - cd ..
-
 buildFrontend:
   stage: buildFrontend
   script:
@@ -183,5 +137,6 @@ deployBackend:
     - ls
     - cd backend
     - npm install -g serverless
+    - serverless decrypt --stage dev --password '$SECRET_PASSWORD'
     - serverless deploy
     - cd ..
