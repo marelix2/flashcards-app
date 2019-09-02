@@ -9,13 +9,16 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "mongodb": "^3.3.2"
+  },
   "devDependencies": {
     "mocha": "^6.2.0",
     "serverless": "^1.51.0",
     "serverless-deployment-bucket": "^1.1.0",
     "serverless-iam-roles-per-function": "^2.0.2",
     "serverless-mocha-plugin": "^1.11.0",
-    "serverless-offline": "^5.10.1"
+    "serverless-offline": "^5.10.1",
+    "serverless-secrets-plugin": "^0.1.0"
   }
 }
