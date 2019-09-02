@@ -54,7 +54,6 @@ testBackend:
     - ls
     - cd backend
     - npm install -g serverless
-    - serverless decrypt --stage test --password 'cNwE7RNYRjF9pJHH'
     - npm test
     - cd ..
 
@@ -137,6 +136,5 @@ deployBackend:
     - ls
     - cd backend
     - npm install -g serverless
-    - serverless decrypt --stage dev --password 'cNwE7RNYRjF9pJHH'
     - serverless deploy
     - cd ..
