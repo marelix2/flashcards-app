@@ -2,7 +2,6 @@ image: node:latest
 variables:
   AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
   AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
-  SECRET_PASSWORD: $SECRET_PASSWORD
 
 stages:
   - installFrontend
@@ -55,7 +54,7 @@ testBackend:
     - ls
     - cd backend
     - npm install -g serverless
-    - serverless decrypt --stage test --password '$SECRET_PASSWORD'
+    - serverless decrypt --stage test --password 'cNwE7RNYRjF9pJHH'
     - npm test
     - cd ..
 
@@ -138,6 +137,6 @@ deployBackend:
     - ls
     - cd backend
     - npm install -g serverless
-    - serverless decrypt --stage dev --password '$SECRET_PASSWORD'
+    - serverless decrypt --stage dev --password 'cNwE7RNYRjF9pJHH'
     - serverless deploy
     - cd ..
