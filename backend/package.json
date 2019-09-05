@@ -4,7 +4,7 @@
   "description": "Complex flashcard app wth IPA support (ivona)",
   "main": "src/status/statusController.js",
   "scripts": {
-    "test": "sls invoke test"
+    "test": "sls invoke test -c --exit"
   },
   "keywords": [],
   "author": "",

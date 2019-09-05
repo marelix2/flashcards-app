@@ -42,5 +42,36 @@ functions:
           method: post
           cors: true
 
+  removeFlashcard:
+    handler: src/controller/flashcard.remove
+    events:
+      - http:
+          path: /flashcard
+          method: delete
+          cors: true
+
+  updateFlashcard:
+    handler: src/controller/flashcard.update
+    events:
+      - http:
+          path: /flashcard
+          method: patch
+          cors: true
+
+  getAllFlashcards:
+    handler: src/controller/flashcard.getAll
+    events:
+      - http:
+          path: /flashcard
+          method: get
+          cors: true
+
+  getByFlashcards:
+    handler: src/controller/flashcard.getBy
+    events:
+      - http:
+          path: /flashcard/find
+          method: get
+          cors: true
 
 
